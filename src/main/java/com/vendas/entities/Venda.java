@@ -1,5 +1,7 @@
 package com.vendas.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.lang.reflect.Type;
@@ -24,6 +26,7 @@ public class Venda implements Serializable {
     //LáToCá
     @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL) //Tipo de relação de busca ao DB, todas vendas tem que ter um vendedor, é a melhor opção o cascadeTypeAll
     @JoinColumn(name="vendedor_id", referencedColumnName = "idVendedor")
+    @JsonBackReference
     private Vendedor vendedor;
 
     public Venda(){}
