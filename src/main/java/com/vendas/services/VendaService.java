@@ -4,9 +4,11 @@ import com.vendas.dtos.VendaDto;
 import com.vendas.entities.Venda;
 import com.vendas.entities.Vendedor;
 import com.vendas.repositories.VendaRepository;
+import com.vendas.repositories.VendedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -14,6 +16,9 @@ public class VendaService {
 
     @Autowired
     private VendaRepository vendaRepository;
+    
+    @Autowired
+    private VendedorRepository vendedorRepository;
 
     public List<Venda> findAll() {
         return vendaRepository.findAll();
@@ -23,9 +28,12 @@ public class VendaService {
         Venda venda = new Venda();
         venda.setData(vendaDto.getData());
         venda.setValor(vendaDto.getValor());
-        Vendedor vendedor = new Vendedor();
-        vendedor.setIdVendedor(vendaDto.getVendedorId());
+
+        Vendedor vendedor = vendedorRepository.getById(vendaDto.getVendedorId());
         venda.setVendedor(vendedor);
         return vendaRepository.save(venda);
+
     }
+
+
 }
