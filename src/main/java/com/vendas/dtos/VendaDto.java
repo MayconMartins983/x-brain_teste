@@ -14,13 +14,13 @@ public class VendaDto implements Serializable {
 
     public VendaDto(){}
 
-//    public Long getIdVenda() {
-//        return idVenda;
-//    }
-//
-//    public void setIdVenda(Long idVenda) {
-//        this.idVenda = idVenda;
-//    }
+    public Long getIdVenda() {
+        return idVenda;
+    }
+
+    public void setIdVenda(Long idVenda) {
+        this.idVenda = idVenda;
+    }
 
     public LocalDateTime getData() {
         return data;

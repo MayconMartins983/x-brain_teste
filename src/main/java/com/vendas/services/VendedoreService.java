@@ -44,4 +44,10 @@ public class VendedoreService {
     private Integer calculaTotalDias(LocalDateTime dataInicio, LocalDateTime dataFim) {
         return dataFim.getDayOfYear() - dataInicio.getDayOfYear();
     }
+
+    public Vendedor inserirVendedor(VendedorDto vendedorDto) {
+        Vendedor vendedor = new Vendedor();
+        vendedor.setNome(vendedorDto.getNome());
+        return vendedorRepository.save(vendedor);
+    }
 }
