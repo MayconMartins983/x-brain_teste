@@ -24,7 +24,7 @@ public class Venda implements Serializable {
     private Double valor;
 
     //LáToCá
-    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL) //Tipo de relação de busca ao DB, todas vendas tem que ter um vendedor, é a melhor opção o cascadeTypeAll
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.DETACH) //Tipo de relação de busca ao DB, todas vendas tem que ter um vendedor, é a melhor opção o cascadeTypeAll
     @JoinColumn(name="vendedor_id", referencedColumnName = "idVendedor")
     @JsonBackReference
     private Vendedor vendedor;

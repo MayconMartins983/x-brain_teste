@@ -5,6 +5,8 @@ import com.vendas.entities.Venda;
 import com.vendas.entities.Vendedor;
 import com.vendas.repositories.VendaRepository;
 import com.vendas.repositories.VendedorRepository;
+
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +33,14 @@ public class VendaService {
         Vendedor vendedor = vendedorRepository.getById(vendaDto.getVendedorId());
         venda.setVendedor(vendedor);
         return vendaRepository.save(venda);
-
     }
 
+    public Venda findById(Long id) throws ObjectNotFoundException {
+        return vendaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(null,     "objeto não encontrado pelo Id"));
+    }
+
+    public void deleteById(Long id) {
+        vendaRepository.deleteById(id);
+    }
 
 }
