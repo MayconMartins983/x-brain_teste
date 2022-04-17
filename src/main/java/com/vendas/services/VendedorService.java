@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-//MUDAR O NOME DA CLASSE VENMDEDORE
+
 @Service
-public class VendedoreService {
+public class VendedorService {
     @Autowired
     private VendedorRepository vendedorRepository;
 

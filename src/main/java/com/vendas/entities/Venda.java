@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,8 +22,7 @@ public class Venda implements Serializable {
     @Column(nullable = false)
     private Double valor;
 
-    //LáToCá
-    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.DETACH) //Tipo de relação de busca ao DB, todas vendas tem que ter um vendedor, é a melhor opção o cascadeTypeAll
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.DETACH)
     @JoinColumn(name="vendedor_id", referencedColumnName = "idVendedor")
     @JsonBackReference
     private Vendedor vendedor;

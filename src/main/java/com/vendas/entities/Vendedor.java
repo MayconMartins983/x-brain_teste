@@ -15,8 +15,6 @@ public class Vendedor implements Serializable {
     private Long idVendedor;
     private String nome;
 
-    //LáToCá
-
     @OneToMany(mappedBy = "vendedor", fetch = FetchType.EAGER)
     public List<Venda> vendas;
 

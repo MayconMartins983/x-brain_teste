@@ -29,14 +29,13 @@ public class VendaService {
         Venda venda = new Venda();
         venda.setData(vendaDto.getData());
         venda.setValor(vendaDto.getValor());
-
         Vendedor vendedor = vendedorRepository.getById(vendaDto.getVendedorId());
         venda.setVendedor(vendedor);
         return vendaRepository.save(venda);
     }
 
     public Venda findById(Long id) throws ObjectNotFoundException {
-        return vendaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(null,     "objeto não encontrado pelo Id"));
+        return vendaRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(null, "objeto não encontrado pelo Id"));
     }
 
     public void deleteById(Long id) {
